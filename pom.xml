@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.mdg</groupId>
-    <artifactId>SocialLoginToPayment-Spring_Boot-JPA</artifactId>
+    <artifactId>social-login-to-payment-spring-boot-jpa</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>SocialLoginToPayment-Spring_Boot-JPA</name>
-    <description>SocialLoginToPayment-Spring_Boot-JPA</description>
+    <name>social-login-to-payment-spring-boot-jpa</name>
+    <description>social-login-to-payment-spring-boot-jpa</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
