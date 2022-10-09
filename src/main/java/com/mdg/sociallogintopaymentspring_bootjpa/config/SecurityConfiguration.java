@@ -17,11 +17,14 @@ public class SecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeRequests((authz) ->
-                        authz.antMatchers("/login", "/loginProcess", "/loginFailure",
-                                "/logout", "/join", "/list",
-                                "/**/css/*", "/**/js/*").permitAll())
-                .formLogin()
-                .loginPage("/login").defaultSuccessUrl("/loginSuccess").failureUrl("/loginFailure")
+                        {
+                            authz.antMatchers("/login", "/loginProcess", "/loginFailure",
+                                    "/logout", "/join", "/list",
+                                    "/**/css/*", "/**/js/*").permitAll();
+                        }
+                )
+                .formLogin().failureUrl("/loginFailure")
+                .loginPage("/").successForwardUrl("/loginSuccess")
                 .and()
                 .logout().logoutSuccessUrl("/").invalidateHttpSession(true)
                 .and()

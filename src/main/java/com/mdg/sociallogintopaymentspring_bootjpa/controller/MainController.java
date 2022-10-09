@@ -6,15 +6,13 @@ import com.mdg.sociallogintopaymentspring_bootjpa.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,19 +30,21 @@ public class MainController {
     }
 
     @PostMapping("/loginProcess")
-    public String processLogin(@ModelAttribute MemberDto memberDto) {
+    public String processLogin(@RequestParam String id, @RequestParam String password) throws AuthenticationException {
         System.out.println("로그인 중");
-        System.out.println("memberDto.getId() = " + memberDto.getId());
-        System.out.println("memberDto.getPassword() = " + memberDto.getPassword());
-        UserDetails userDetails = userDetailsService.loadUserByUsername(memberDto.getId());
+        System.out.println("id = " + id);
+        System.out.println("password = " + password);
+        UserDetails userDetails = userDetailsService.loadUserByUsername(id);
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
                 userDetails,
-                memberDto.getPassword(),
+                password,
                 userDetails.getAuthorities()
         );
-        System.out.println("여기");
-        authenticationManager.authenticate(token);
-        System.out.println("여기2");
+        try {
+            authenticationManager.authenticate(token);
+        } catch (AuthenticationException e) {
+            return "redirect:/loginFailure";
+        }
         if (token.isAuthenticated()) {
             SecurityContextHolder.getContext().setAuthentication(token);
 
@@ -84,7 +84,7 @@ public class MainController {
         String result = "";
         List<Member> memberList = memberService.getMemberList();
         for (Member member : memberList) {
-            result += member.toString();
+            result += "\n" + member.toString();
         }
         return result;
     }

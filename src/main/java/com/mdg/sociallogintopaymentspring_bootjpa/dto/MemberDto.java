@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Builder
 @Getter
@@ -33,5 +34,18 @@ public class MemberDto {
                 .phone3(phone3)
                 .authority(authority)
                 .build();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MemberDto memberDto = (MemberDto) o;
+        return Objects.equals(id, memberDto.id) && Objects.equals(password, memberDto.password) && Objects.equals(name, memberDto.name) && Objects.equals(birthday, memberDto.birthday) && Objects.equals(address, memberDto.address) && Objects.equals(phone1, memberDto.phone1) && Objects.equals(phone2, memberDto.phone2) && Objects.equals(phone3, memberDto.phone3) && Objects.equals(authority, memberDto.authority);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, password, name, birthday, address, phone1, phone2, phone3, authority);
     }
 }
