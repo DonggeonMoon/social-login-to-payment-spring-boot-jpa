@@ -21,7 +21,7 @@ public class SecurityConfiguration {
                                 "/logout", "/join", "/list",
                                 "/**/css/*", "/**/js/*").permitAll())
                 .formLogin()
-                .loginPage("/login").defaultSuccessUrl("/loginSuccess").failureUrl("loginFailure")
+                .loginPage("/login").defaultSuccessUrl("/loginSuccess").failureUrl("/loginFailure")
                 .and()
                 .logout().logoutSuccessUrl("/").invalidateHttpSession(true)
                 .and()
