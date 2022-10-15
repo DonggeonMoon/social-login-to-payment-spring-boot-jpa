@@ -81,11 +81,11 @@ public class MainController {
     @GetMapping("/list")
     @ResponseBody
     public String list() {
-        String result = "";
+        StringBuilder result = new StringBuilder();
         List<Member> memberList = memberService.getMemberList();
         for (Member member : memberList) {
-            result += "\n" + member.toString();
+            result.append("\n").append(member.toString());
         }
-        return result;
+        return result.toString();
     }
 }
