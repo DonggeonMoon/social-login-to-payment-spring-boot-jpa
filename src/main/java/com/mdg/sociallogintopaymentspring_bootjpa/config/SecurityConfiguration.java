@@ -18,9 +18,9 @@ public class SecurityConfiguration {
         httpSecurity
                 .authorizeRequests((authz) ->
                         {
-                            authz.antMatchers("/login", "/loginProcess", "/loginFailure",
-                                    "/logout", "/join", "/list",
-                                    "/**/css/*", "/**/js/*").permitAll();
+                            authz.requestMatchers("/login", "/loginProcess", "/loginFailure",
+                                "/logout", "/join", "/list",
+                                "/**/css/*", "/**/js/*").permitAll();
                         }
                 )
                 .formLogin().failureUrl("/loginFailure")
@@ -34,7 +34,7 @@ public class SecurityConfiguration {
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().antMatchers("/h2-console/**");
+        return (web) -> web.ignoring().requestMatchers("/h2-console/**");
     }
 
     @Bean

@@ -1,0 +1,70 @@
+package com.mdg.sociallogintopaymentspring_bootjpa.model;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import com.mdg.sociallogintopaymentspring_bootjpa.util.PasswordConverter;
+import com.mdg.sociallogintopaymentspring_bootjpa.util.PersonalDateInformationConverter;
+import com.mdg.sociallogintopaymentspring_bootjpa.util.PersonalInformationConverter;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@EntityListeners(AuditingEntityListener.class)
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String id;
+    @Column(nullable = false)
+    private String memberId;
+    @Column(nullable = false)
+    @Convert(converter = PasswordConverter.class)
+    private String password;
+    @Column(nullable = false)
+    @Convert(converter = PersonalInformationConverter.class)
+    private String name;
+    @Column(nullable = false)
+    @Convert(converter = PersonalDateInformationConverter.class)
+    private LocalDate birthday;
+    @Convert(converter = PersonalInformationConverter.class)
+    private String address;
+    @Convert(converter = PersonalInformationConverter.class)
+    private String phoneNumber;
+    @Convert(converter = PersonalInformationConverter.class)
+    private String email;
+    private String authority;
+    @CreatedDate
+    private LocalDateTime createdAt;
+    @LastModifiedDate
+    private LocalDateTime modifiedAt;
+
+    public void update(String id, String memberId, String password, String name, LocalDate birthday, String address, String phoneNumber, String email, String authority) {
+        this.id = id;
+        this.memberId = memberId;
+        this.password = password;
+        this.name = name;
+        this.birthday = birthday;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.authority = authority;
+    }
+}
