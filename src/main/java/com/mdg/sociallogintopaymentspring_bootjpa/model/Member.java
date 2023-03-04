@@ -1,11 +1,16 @@
 package com.mdg.sociallogintopaymentspring_bootjpa.model;
 
-import com.mdg.sociallogintopaymentspring_bootjpa.dto.MemberDto;
-import lombok.*;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import java.time.LocalDate;
+
+import com.mdg.sociallogintopaymentspring_bootjpa.dto.MemberDto;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Builder
@@ -27,16 +32,16 @@ public class Member {
 
     public MemberDto toDto() {
         return MemberDto.builder()
-                .id(id)
-                .password(password)
-                .name(name)
-                .birthday(birthday)
-                .address(address)
-                .phone1(phone1)
-                .phone2(phone2)
-                .phone3(phone3)
-                .authority(authority)
-                .build();
+            .id(id)
+            .password(password)
+            .name(name)
+            .birthday(birthday)
+            .address(address)
+            .phone1(phone1)
+            .phone2(phone2)
+            .phone3(phone3)
+            .authority(authority)
+            .build();
     }
 
     public void update(String id, String password, String name, LocalDate birthday, String address, String phone1, String phone2, String phone3, String authority) {
