@@ -15,6 +15,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 import org.springframework.beans.factory.annotation.Value;
 
+import jakarta.annotation.PostConstruct;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 
@@ -25,13 +26,16 @@ public class PersonalDateInformationConverter implements AttributeConverter<Loca
     @Value("${crypto.key}")
     private String key;
     private final byte[] iv = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
-    private final Cipher cipher;
-    private final SecretKeySpec secretKeySpec = new SecretKeySpec(key.getBytes(), "AES");
-    private final IvParameterSpec ivParameterSpec = new IvParameterSpec(iv);
+    private Cipher cipher;
+    private SecretKeySpec secretKeySpec;
+    private IvParameterSpec ivParameterSpec;
 
-    public PersonalDateInformationConverter() {
+    @PostConstruct
+    public void init() {
         try {
             cipher = Cipher.getInstance(algorithm);
+            secretKeySpec = new SecretKeySpec(key.getBytes(), "AES");
+            ivParameterSpec = new IvParameterSpec(iv);
         } catch (NoSuchAlgorithmException | NoSuchPaddingException e) {
             throw new RuntimeException(e);
         }
