@@ -1,4 +1,4 @@
-package com.mdg.sociallogintopaymentspring_bootjpa.util;
+package com.mdg.sociallogintopayment.util;
 
 import jakarta.persistence.AttributeConverter;
 

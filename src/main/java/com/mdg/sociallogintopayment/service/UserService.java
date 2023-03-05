@@ -1,13 +1,13 @@
-package com.mdg.sociallogintopaymentspring_bootjpa.service;
+package com.mdg.sociallogintopayment.service;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.mdg.sociallogintopaymentspring_bootjpa.dto.UserDto;
-import com.mdg.sociallogintopaymentspring_bootjpa.model.User;
-import com.mdg.sociallogintopaymentspring_bootjpa.repository.UserRepository;
+import com.mdg.sociallogintopayment.dto.UserDto;
+import com.mdg.sociallogintopayment.model.User;
+import com.mdg.sociallogintopayment.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 

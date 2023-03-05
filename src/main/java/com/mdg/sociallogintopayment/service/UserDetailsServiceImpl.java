@@ -1,4 +1,4 @@
-package com.mdg.sociallogintopaymentspring_bootjpa.service;
+package com.mdg.sociallogintopayment.service;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -9,9 +9,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.mdg.sociallogintopaymentspring_bootjpa.dto.UserDto;
-import com.mdg.sociallogintopaymentspring_bootjpa.model.Authority;
-import com.mdg.sociallogintopaymentspring_bootjpa.model.User;
+import com.mdg.sociallogintopayment.dto.UserDto;
+import com.mdg.sociallogintopayment.model.Authority;
+import com.mdg.sociallogintopayment.model.User;
 
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;

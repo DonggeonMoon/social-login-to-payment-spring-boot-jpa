@@ -1,4 +1,4 @@
-package com.mdg.sociallogintopaymentspring_bootjpa.config;
+package com.mdg.sociallogintopayment.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;

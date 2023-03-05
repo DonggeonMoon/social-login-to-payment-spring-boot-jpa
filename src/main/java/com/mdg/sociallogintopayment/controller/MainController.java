@@ -1,4 +1,4 @@
-package com.mdg.sociallogintopaymentspring_bootjpa.controller;
+package com.mdg.sociallogintopayment.controller;
 
 import java.util.List;
 
@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.mdg.sociallogintopaymentspring_bootjpa.dto.UserDto;
-import com.mdg.sociallogintopaymentspring_bootjpa.model.User;
-import com.mdg.sociallogintopaymentspring_bootjpa.service.UserService;
+import com.mdg.sociallogintopayment.dto.UserDto;
+import com.mdg.sociallogintopayment.model.User;
+import com.mdg.sociallogintopayment.service.UserService;
 
 import lombok.RequiredArgsConstructor;
 

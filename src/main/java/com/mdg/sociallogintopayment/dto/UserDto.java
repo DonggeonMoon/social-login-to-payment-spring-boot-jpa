@@ -1,9 +1,9 @@
-package com.mdg.sociallogintopaymentspring_bootjpa.dto;
+package com.mdg.sociallogintopayment.dto;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import com.mdg.sociallogintopaymentspring_bootjpa.model.User;
+import com.mdg.sociallogintopayment.model.User;
 
 import lombok.Builder;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.mdg.sociallogintopaymentspring_bootjpa;
+package com.mdg.sociallogintopayment;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

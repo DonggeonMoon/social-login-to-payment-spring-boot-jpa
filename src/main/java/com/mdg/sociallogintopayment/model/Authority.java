@@ -1,4 +1,4 @@
-package com.mdg.sociallogintopaymentspring_bootjpa.model;
+package com.mdg.sociallogintopayment.model;
 
 import org.springframework.security.core.GrantedAuthority;
 

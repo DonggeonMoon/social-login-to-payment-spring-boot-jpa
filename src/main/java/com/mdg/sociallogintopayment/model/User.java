@@ -1,4 +1,4 @@
-package com.mdg.sociallogintopaymentspring_bootjpa.model;
+package com.mdg.sociallogintopayment.model;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -7,9 +7,9 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import com.mdg.sociallogintopaymentspring_bootjpa.util.PasswordConverter;
-import com.mdg.sociallogintopaymentspring_bootjpa.util.PersonalDateInformationConverter;
-import com.mdg.sociallogintopaymentspring_bootjpa.util.PersonalInformationConverter;
+import com.mdg.sociallogintopayment.util.PasswordConverter;
+import com.mdg.sociallogintopayment.util.PersonalDateInformationConverter;
+import com.mdg.sociallogintopayment.util.PersonalInformationConverter;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
