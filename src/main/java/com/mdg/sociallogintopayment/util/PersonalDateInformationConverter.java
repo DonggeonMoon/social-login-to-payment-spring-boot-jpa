@@ -44,7 +44,7 @@ public class PersonalDateInformationConverter implements AttributeConverter<Loca
     @Override
     public String convertToDatabaseColumn(LocalDate attribute) {
         try {
-            String convertedDate = String.valueOf(attribute);
+            String convertedDate = (attribute == null) ? "" : String.valueOf(attribute);
 
             cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec, ivParameterSpec);
 

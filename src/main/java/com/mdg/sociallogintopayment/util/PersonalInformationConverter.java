@@ -42,6 +42,8 @@ public class PersonalInformationConverter implements AttributeConverter<String, 
 
     @Override
     public String convertToDatabaseColumn(String attribute) {
+        attribute = (attribute == null) ? "" : attribute;
+
         try {
             cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec, ivParameterSpec);
 

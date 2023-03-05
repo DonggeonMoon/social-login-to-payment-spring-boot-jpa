@@ -36,15 +36,14 @@ public class MainController {
     }
 
     @PostMapping("/loginProcess")
-    public String processLogin(@RequestParam String id, @RequestParam String password) throws AuthenticationException {
+    public String processLogin(@RequestParam String memberId, @RequestParam String password) throws AuthenticationException {
         System.out.println("로그인 중");
-        System.out.println("id = " + id);
+        System.out.println("id = " + memberId);
         System.out.println("password = " + password);
-        UserDetails userDetails = userDetailsService.loadUserByUsername(id);
+        UserDetails userDetails = userDetailsService.loadUserByUsername(memberId);
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
             userDetails,
-            password,
-            userDetails.getAuthorities()
+            password
         );
         try {
             authenticationManager.authenticate(token);
@@ -87,9 +86,9 @@ public class MainController {
     @ResponseBody
     public String list() {
         StringBuilder result = new StringBuilder();
-        List<User> userList = userService.getUserList();
+        List<User> userList = userService.getUsers();
         for (User user : userList) {
-            result.append("\n").append(user.toString());
+            result.append("\n").append(user.getMemberId() + " " + user.getPassword());
         }
         return result.toString();
     }

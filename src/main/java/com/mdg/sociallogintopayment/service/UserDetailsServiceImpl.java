@@ -14,21 +14,22 @@ import com.mdg.sociallogintopayment.model.Authority;
 import com.mdg.sociallogintopayment.model.User;
 
 import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
 
 @Service
 @RequiredArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService {
     private final UserService userService;
 
-    @SneakyThrows
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userService.getUser(UserDto.builder().id(username).build());
+        try {
+            User user = userService.getUser(UserDto.builder().memberId(username).build());
+            Set<GrantedAuthority> set = new HashSet<>();
+            set.add(new Authority());
 
-        Set<GrantedAuthority> set = new HashSet<>();
-        set.add(new Authority());
-        assert false;
-        return new org.springframework.security.core.userdetails.User(user.getId(), user.getPassword(), set);
+            return new org.springframework.security.core.userdetails.User(user.getMemberId(), user.getPassword(), set);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }
