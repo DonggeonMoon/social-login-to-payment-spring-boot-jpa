@@ -1,7 +1,9 @@
 package com.mdg.sociallogintopayment.util;
 
 import jakarta.persistence.AttributeConverter;
+import jakarta.persistence.Converter;
 
+@Converter
 public class PasswordConverter implements AttributeConverter<String, String> {
 
     @Override
