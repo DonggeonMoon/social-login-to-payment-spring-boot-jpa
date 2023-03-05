@@ -18,6 +18,7 @@ import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -25,7 +26,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Builder
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Getter
 @EntityListeners(AuditingEntityListener.class)
@@ -55,6 +56,19 @@ public class User {
     private LocalDateTime createdAt;
     @LastModifiedDate
     private LocalDateTime modifiedAt;
+
+    public static User of(String memberId, String password, String name, LocalDate birthday, String address, String phoneNumber, String email, String authority) {
+        return User.builder()
+            .memberId(memberId)
+            .password(password)
+            .name(name)
+            .birthday(birthday)
+            .address(address)
+            .phoneNumber(phoneNumber)
+            .email(email)
+            .authority(authority)
+            .build();
+    }
 
     public void update(String id, String memberId, String password, String name, LocalDate birthday, String address, String phoneNumber, String email, String authority) {
         this.id = id;
