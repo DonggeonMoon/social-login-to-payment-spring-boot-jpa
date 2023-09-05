@@ -1,4 +1,4 @@
-package com.mdg.sociallogintopayment.controller;
+package com.mdg.sociallogintopayment.domain.user.controller;
 
 import java.util.List;
 
@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.mdg.sociallogintopayment.dto.UserDto;
-import com.mdg.sociallogintopayment.model.User;
-import com.mdg.sociallogintopayment.service.UserService;
+import com.mdg.sociallogintopayment.domain.user.dto.UserDto;
+import com.mdg.sociallogintopayment.domain.user.model.User;
+import com.mdg.sociallogintopayment.domain.user.service.UserService;
 
 import lombok.RequiredArgsConstructor;
 

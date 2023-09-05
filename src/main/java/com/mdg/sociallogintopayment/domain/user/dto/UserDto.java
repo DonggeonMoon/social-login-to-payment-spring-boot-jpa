@@ -1,4 +1,4 @@
-package com.mdg.sociallogintopayment.dto;
+package com.mdg.sociallogintopayment.domain.user.dto;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -9,9 +9,9 @@ import java.util.stream.Collectors;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.mdg.sociallogintopayment.model.Authority;
-import com.mdg.sociallogintopayment.model.User;
-import com.mdg.sociallogintopayment.model.UserAuthority;
+import com.mdg.sociallogintopayment.domain.user.model.Authority;
+import com.mdg.sociallogintopayment.domain.user.model.User;
+import com.mdg.sociallogintopayment.domain.user.model.UserAuthority;
 
 import lombok.Builder;
 import lombok.Getter;

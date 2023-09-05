@@ -1,4 +1,4 @@
-package com.mdg.sociallogintopayment.util;
+package com.mdg.sociallogintopayment.global.util;
 
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;

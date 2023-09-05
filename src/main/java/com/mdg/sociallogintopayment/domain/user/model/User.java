@@ -1,32 +1,20 @@
-package com.mdg.sociallogintopayment.model;
+package com.mdg.sociallogintopayment.domain.user.model;
+
+import com.mdg.sociallogintopayment.domain.user.dto.UserDto;
+import com.mdg.sociallogintopayment.global.util.PersonalDateInformationConverter;
+import com.mdg.sociallogintopayment.global.util.PersonalInformationConverter;
+import jakarta.persistence.*;
+import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
-import com.mdg.sociallogintopayment.dto.UserDto;
-import com.mdg.sociallogintopayment.util.PersonalDateInformationConverter;
-import com.mdg.sociallogintopayment.util.PersonalInformationConverter;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Convert;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-
 @Entity
+@Table(name = "users")
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
@@ -62,19 +50,18 @@ public class User {
 
     public static User of(String memberId, String password, String name, LocalDate birthday, String address, String phoneNumber, String email, List<UserAuthority> userAuthorities) {
         return User.builder()
-            .memberId(memberId)
-            .password(password)
-            .name(name)
-            .birthday(birthday)
-            .address(address)
-            .phoneNumber(phoneNumber)
-            .email(email)
-            .userAuthorities(userAuthorities)
-            .build();
+                .memberId(memberId)
+                .password(password)
+                .name(name)
+                .birthday(birthday)
+                .address(address)
+                .phoneNumber(phoneNumber)
+                .email(email)
+                .userAuthorities(userAuthorities)
+                .build();
     }
 
-    public void update(long id, String memberId, String password, String name, LocalDate birthday, String address, String phoneNumber, String email, List<UserAuthority> userAuthorities) {
-        this.id = id;
+    public void update(String memberId, String password, String name, LocalDate birthday, String address, String phoneNumber, String email, List<UserAuthority> userAuthorities) {
         this.memberId = memberId;
         this.password = password;
         this.name = name;

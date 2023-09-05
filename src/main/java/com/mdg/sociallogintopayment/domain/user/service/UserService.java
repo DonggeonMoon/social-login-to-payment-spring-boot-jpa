@@ -1,15 +1,13 @@
-package com.mdg.sociallogintopayment.service;
+package com.mdg.sociallogintopayment.domain.user.service;
 
-import java.util.List;
-
+import com.mdg.sociallogintopayment.domain.user.dto.UserDto;
+import com.mdg.sociallogintopayment.domain.user.model.User;
+import com.mdg.sociallogintopayment.domain.user.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.mdg.sociallogintopayment.dto.UserDto;
-import com.mdg.sociallogintopayment.model.User;
-import com.mdg.sociallogintopayment.repository.UserRepository;
-
-import lombok.RequiredArgsConstructor;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -34,8 +32,8 @@ public class UserService {
     @Transactional
     public void updateUser(UserDto userDto) throws Exception {
         User user = userRepository.findByMemberId(userDto.getMemberId()).orElseThrow(Exception::new);
-        user.update(userDto.getId(), userDto.getMemberId(), userDto.getPassword(), userDto.getName(), userDto.getBirthday(), userDto.getAddress(), userDto.getPhoneNumber(), userDto.getEmail(),
-            userDto.getUserAuthorities());
+        user.update(userDto.getMemberId(), userDto.getPassword(), userDto.getName(), userDto.getBirthday(), userDto.getAddress(), userDto.getPhoneNumber(), userDto.getEmail(),
+                userDto.getUserAuthorities());
     }
 
     @Transactional

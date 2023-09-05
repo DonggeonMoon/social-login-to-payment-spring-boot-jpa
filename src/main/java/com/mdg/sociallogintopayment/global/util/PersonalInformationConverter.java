@@ -1,9 +1,8 @@
-package com.mdg.sociallogintopayment.util;
+package com.mdg.sociallogintopayment.global.util;
 
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-import java.time.LocalDate;
 import java.util.Base64;
 
 import javax.crypto.BadPaddingException;
@@ -20,7 +19,7 @@ import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 
 @Converter
-public class PersonalDateInformationConverter implements AttributeConverter<LocalDate, String> {
+public class PersonalInformationConverter implements AttributeConverter<String, String> {
     @Value("${crypto.algorithm}")
     private String algorithm;
     @Value("${crypto.key}")
@@ -42,26 +41,24 @@ public class PersonalDateInformationConverter implements AttributeConverter<Loca
     }
 
     @Override
-    public String convertToDatabaseColumn(LocalDate attribute) {
-        try {
-            String convertedDate = (attribute == null) ? "" : String.valueOf(attribute);
+    public String convertToDatabaseColumn(String attribute) {
+        attribute = (attribute == null) ? "" : attribute;
 
+        try {
             cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec, ivParameterSpec);
 
-            return Base64.getEncoder().encodeToString(cipher.doFinal(convertedDate.getBytes()));
+            return Base64.getEncoder().encodeToString(cipher.doFinal(attribute.getBytes()));
         } catch (InvalidKeyException | IllegalBlockSizeException | BadPaddingException | InvalidAlgorithmParameterException e) {
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    public LocalDate convertToEntityAttribute(String dbData) {
+    public String convertToEntityAttribute(String dbData) {
         try {
             cipher.init(Cipher.DECRYPT_MODE, secretKeySpec, ivParameterSpec);
 
-            String decryptedDate = new String(cipher.doFinal(Base64.getDecoder().decode(dbData)));
-
-            return LocalDate.parse(decryptedDate);
+            return new String(cipher.doFinal(Base64.getDecoder().decode(dbData)));
         } catch (InvalidKeyException | InvalidAlgorithmParameterException | BadPaddingException | IllegalBlockSizeException e) {
             throw new RuntimeException(e);
         }

@@ -1,4 +1,4 @@
-package com.mdg.sociallogintopayment.service;
+package com.mdg.sociallogintopayment.domain.user.service;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -9,9 +9,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.mdg.sociallogintopayment.dto.UserDto;
-import com.mdg.sociallogintopayment.model.Authority;
-import com.mdg.sociallogintopayment.model.User;
+import com.mdg.sociallogintopayment.domain.user.dto.UserDto;
+import com.mdg.sociallogintopayment.domain.user.model.Authority;
+import com.mdg.sociallogintopayment.domain.user.model.User;
 
 import lombok.RequiredArgsConstructor;
 

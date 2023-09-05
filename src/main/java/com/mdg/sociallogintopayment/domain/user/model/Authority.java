@@ -1,4 +1,4 @@
-package com.mdg.sociallogintopayment.model;
+package com.mdg.sociallogintopayment.domain.user.model;
 
 import java.util.List;
 

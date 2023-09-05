@@ -1,4 +1,4 @@
-package com.mdg.sociallogintopayment.config;
+package com.mdg.sociallogintopayment.global.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
